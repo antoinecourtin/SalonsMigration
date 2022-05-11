@@ -1,2 +1,2 @@
 # SalonsMigration
-ressources/réflexions sur la imgraiton base Orsay
+ressources/réflexions sur la migration de la base Salons de l'EPMO
