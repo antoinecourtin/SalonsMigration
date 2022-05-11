@@ -18,4 +18,4 @@ SELECT DISTINCT ?item ?itemLabel ?itemDescription ?idTMS ?idBddSalons ?img (CONC
     SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]" }
 }
 ```
-Utiliser
+Accéder à l'export CSV du 11 mai 2022 de la requête SPARQL via l'interface de Flat Viewer : https://flatgithub.com/antoinecourtin/SalonsMigration?filename=query%20%281%29.csv&filters=&sha=b889c9c7c2661e364d368494879c959b8ade3220&sort=img%2Casc&stickyColumnName=itemDescription
