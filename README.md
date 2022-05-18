@@ -23,6 +23,25 @@ WHERE {
 ```
 Accéder à l'export CSV du 11 mai 2022 de la requête SPARQL via l'interface de Flat Viewer : https://flatgithub.com/antoinecourtin/SalonsMigration?filename=query%20%281%29.csv&filters=&sha=b889c9c7c2661e364d368494879c959b8ade3220&sort=img%2Casc&stickyColumnName=itemDescription
 
+#### Peintures et sculptures (et ss-classe) conservées au Louvre et ayant un id de la base Salons
+```sparql
+SELECT DISTINCT ?item ?itemLabel ?itemDescription ?img ?idLouvre (CONCAT("https://collections.louvre.fr/ark:/53355/cl", STR(?idLouvre )) as ?URLbddLouvre) (CONCAT("http://salons.musee-orsay.fr/index/notice/", STR(?idBddSalons )) as ?URLbddSalons)
+WHERE {
+      {?item wdt:P31/wdt:P279* wd:Q3305213} UNION {?item wdt:P31/wdt:P279* wd:Q860861} # classe et sous-classes de peinture et sculptures
+      ?item wdt:P195/wdt:P361* ?collection . # qui font partie de musées et de tous ses départements si existant
+   
+    FILTER ( ?collection = wd:Q19675 ) # du musée Louvre
+  
+  ?item wdt:P9394 ?idLouvre.
+      ?item wdt:P6007 ?idBddSalons. #qui ont un id dans la base Salons
+    OPTIONAL {
+      ?item wdt:P18 ?img.     
+}
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]" }
+}
+```
+
+
 #### Peintures et sculptures (et ss-classe) ayant un id de la base Salon  et récupération des métadonnées descriptives de 1er niveau
 ```sparql
 SELECT DISTINCT ?item ?itemLabel  ?itemDescription  ?creatorLabel ?locationLabel ?datecrea ?idBddSalons ?img # utilisaiton de CONCAT pour créer tout de suite des URLs
@@ -40,6 +59,8 @@ WHERE {
     SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]" }
 }
 ```
+
+
 
 ##### Autres idées/ressources
 
