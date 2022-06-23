@@ -12,7 +12,6 @@ SELECT DISTINCT ?item ?itemLabel ?itemDescription ?idTMS ?idBddSalons ?img (CONC
 WHERE {
       {?item wdt:P31/wdt:P279* wd:Q3305213} UNION {?item wdt:P31/wdt:P279* wd:Q860861} # classe et sous-classes de peinture et sculptures
       ?item wdt:P195/wdt:P361* ?collection . # qui font partie de musées et de tous ses départements si existant
-    cccccccccccccccc
       ?item wdt:P4659 ?idTMS.
       ?item wdt:P6007 ?idBddSalons. #qui ont un id dans la base Salons
     OPTIONAL {
